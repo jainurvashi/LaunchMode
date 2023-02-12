@@ -1,0 +1,48 @@
+ Launch Modes for Activities
+ There are four different types of Launch Modes
+  1) Standard                                                       // default launch mode
+  2) Single Top
+  3) Single Task
+  4) Single Instance
+
+Standard:- It launches a new instance of an activity in the task from which it was launched.  or
+           It creates a new instance of activity every time even if activity instance is already present.
+
+SingleTop:- If an instance of activity already exists at the top of the current task, a new instance will
+            not be created and the Android system will route the intent information through onNewIntent().
+            If an instance is not present on top of the task then a new instance will be created.
+
+SingleTask:- An activity declared with launch mode as singleTask can have only one instance in the system
+             (singleton). At a time only one instance of activity will exist.
+             If activity instance is not present then the new instance will be created and if the instance
+             is already present in the system then the onNewIntent() method will receive the callback.
+
+SingleInstance:- This is a highly unique start option that is only used in programs with a single activity.
+                 It works similarly to Single Task, except that no additional activities are generated in the
+                 same task. Any further activity initiated from this point will result in the creation of a new
+                 task.
+Example of SingleInstance:
+Case 1:
+Suppose you have A, B, and C activities(A →B →C) and your activity D has a singleInstance launch mode.
+In this case, if we launch D then D will be launch in the diffrent task. New task for D will be created.
+
+Task1: A →B →C
+Task2 : D (here D will be in the different task)
+
+Now if you continue this and start E and D then Stack will look like
+
+Task1: A →B →C →E
+Task2: D
+
+
+
+Case 2:
+Suppose you have A, B, C activities in one task (A →B →C)and activity D is in another task with launch mode singleInstance. In this case, if we launch D again then we will receive the callback in the onNewIntent() method of D activity.
+
+Task1: A →B →C
+Task2: D (Here old instance gets called and intent data route through onNewIntent() callback)
+
+
+  // To manage the launch tags you can use these methods:
+ //  FLAG_ACTIVITY_SINGLE_TOP
+//   FLAG_ACTIVITY_CLEAR_TOP

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LaunchModeProject</string>
+    <string name="example_of_launch_mode_in_android">Example of Launch Mode in Android</string>
+    <string name="standard">Standard</string>
+    <string name="singletop">singleTop</string>
+    <string name="singletask">SingleTask</string>
+    <string name="singleinstance">SingleInstance</string>
+</resources>
